@@ -1,0 +1,31 @@
+@page "/Edit"
+@model EditModel
+<h1>@ViewData["Title"]</h1>
+<form method="post"  >
+    <div class="input-group mb-3">
+    <input type="hidden" asp-for="@Model._article.Id" />
+    <label asp-for="@Model._article.Title" class="input-group-text"></label>
+    <input asp-for="@Model._article.Title"  class="form-control" ><br>
+    <span class="text-danger" asp-validation-for="@Model._article.Title"></span>
+    </div>
+
+    <div class="input-group mb-3">
+    <label asp-for="@Model._article.Created" class="input-group-text" ></label>
+    <input asp-for="@Model._article.Created" class="form-control">
+    <span class="text-danger" asp-validation-for="@Model._article.Created"></span>
+
+    </div>
+
+    <div class="input-group mb-3">
+    <label asp-for="@Model._article.Content" class="input-group-text" ></label>
+    <input asp-for="@Model._article.Content" class="form-control" >
+    <span class="text-danger" asp-validation-for="@Model._article.Content"></span>
+    </div>
+   <input  type="submit" class="btn btn-success" value="post">
+
+</form>
+
+    @section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

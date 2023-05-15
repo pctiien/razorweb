@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model IndexModel
 @using razorEntity.Models
 @{
@@ -6,22 +6,37 @@
     var listBlog = ViewData["posts"] as List<Article>;
 }
 <h1>@ViewData["Title"]</h1>
+<a asp-page="/Create"><button type="button" class="btn btn-success">CREAT</button><br>
+</a> <br>
+  <partial name="PagingModel" model="@Model.paging"></partial>
+
 <div class="list-group">
+   <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Created</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
   @{
     foreach(var item in @listBlog)
     {
-    <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">@item.Title</h5>
-        <small class="text-body-secondary">@item.Created</small>
-        </div>
-        <p class="mb-1">@item.Content</p>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary">Left</button>
-  <button type="button" class="btn btn-outline-primary">Middle</button>
-  <button type="button" class="btn btn-outline-primary">Right</button>
-</div>
-    </a>
+      <tbody>
+        <tr>
+          <td>@item.Title</td>
+          <td>@item.Created</td>
+          <td><div class="btn-group" role="group" aria-label="Basic outlined example">
+            
+            <p><a asp-page="/View" asp-route-id="@item.Id" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover m-3">View </a></p>
+            <p><a asp-page="/Edit" asp-route-id="@item.Id" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover m-3"> Edit </a></p>
+            <p><a asp-page="/Delete" asp-route-id="@item.Id" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover m-3">Delete</a> </p> 
+              </div>
+          </td>
+        </tr>
+      </tbody>
     }
   }
+  </table>
+
 </div>

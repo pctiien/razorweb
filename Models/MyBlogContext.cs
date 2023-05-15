@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace razorEntity.Models
@@ -8,6 +9,7 @@ namespace razorEntity.Models
         {
 
         }
+        [BindProperty]
         public DbSet<Article> articles{set;get;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

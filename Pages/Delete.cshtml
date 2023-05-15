@@ -1,0 +1,27 @@
+@page "/Delete"
+@model DeleteModel
+@{
+    var item = ViewData["item"] ;
+}
+<h1>@ViewData["Title"]</h1>
+ <form method="post">
+     <div class="mb-3 row">
+    <label asp-for="@Model.article.Title" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <input asp-for="@Model.article.Title" type="text" readonly class="form-control-plaintext">
+    </div>
+  </div>
+    <div class="mb-3 row">
+    <label asp-for="@Model.article.Created" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <input asp-for="@Model.article.Created" type="text" readonly class="form-control-plaintext" >
+    </div>
+  </div>
+   <div class="mb-3 row">
+    <label asp-for="@Model.article.Content" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <input asp-for="@Model.article.Content" type="text" readonly class="form-control-plaintext" >
+    </div>
+  </div>
+  <input type="submit" class="btn btn-danger" value="Xóa">
+ </form>

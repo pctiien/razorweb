@@ -1,0 +1,21 @@
+@page "/View"
+@model ViewModel
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+  <fieldset disabled>
+    <div class="mb-3">
+      <label asp-for="@Model.article.Title"  class="form-label"></label>
+      <input type="text" asp-for="@Model.article.Title" class="form-control" placeholder="Disabled input">
+    </div>
+     <div class="mb-3">
+      <label asp-for="@Model.article.Created"  class="form-label"></label>
+      <input type="text" asp-for="@Model.article.Created" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="mb-3">
+      <label asp-for="@Model.article.Content"  class="form-label"></label>
+      <input type="text" asp-for="@Model.article.Content" class="form-control" placeholder="Disabled input">
+    </div>
+    <p><a asp-page="/Index"  class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Back to view list item </a></p>
+
+  </fieldset>
+</form>
