@@ -14,7 +14,7 @@ public class MailSettings
     public int Port { get; set; }
 
 }
-public class SendMailService : IEmailSender {
+public class  SendMailService : IEmailSender {
     private readonly MailSettings mailSettings;
 
     private readonly ILogger<SendMailService> logger;

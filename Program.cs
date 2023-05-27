@@ -54,6 +54,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
      var mailSetting = builder.Configuration.GetSection("MailSettings");
     services.Configure<MailSettings>(mailSetting);
     services.AddSingleton<IEmailSender,SendMailService>();
+
     services.AddDbContext<MyBlogContext>(
         options=>{
             string connectionString = builder.Configuration.GetConnectionString("MySqlDatabase");
@@ -89,7 +90,13 @@ static void ConfigureServices(WebApplicationBuilder builder)
         // Cấu hình đăng nhập.
         options.SignIn.RequireConfirmedEmail = true;            // Cấu hình xác thực địa chỉ email (email phải tồn tại)
         options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
-
+        options.SignIn.RequireConfirmedAccount = true;
+    });
+    services.ConfigureApplicationCookie(options=>
+    {
+        options.LoginPath ="/login/";
+        options.LogoutPath="/logout/";
+        options.AccessDeniedPath ="/Identity/Account/AccessDenied";
     });
 }
 /*
